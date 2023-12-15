@@ -26,8 +26,12 @@ jobs:
         make release-docker-build GOARCH=amd64 GOOS=linux
         ls
 
-    - name: Action Template
-      uses: release-engineers/action-template@v2
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
       with:
-        # Target file relative to the working directory, to either create or overwrite
-        target: ./auger
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: auger
+        asset_name: mything
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "This is my release text"
