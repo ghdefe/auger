@@ -22,4 +22,14 @@ jobs:
         go-version: '1.20'
 
     - name: Build
-      run: make release-docker-build GOARCH=amd64 GOOS=linux
+      run: |
+        make release-docker-build GOARCH=amd64 GOOS=linux
+        ls
+
+    # - name: Action Template
+    #   uses: release-engineers/action-template@v2
+    #   with:
+    #     # Source file relative to the working directory, a Jinja2 template
+    #     source: 
+    #     # Target file relative to the working directory, to either create or overwrite
+    #     target: 
