@@ -26,10 +26,8 @@ jobs:
         make release-docker-build GOARCH=amd64 GOOS=linux
         ls
 
-    # - name: Action Template
-    #   uses: release-engineers/action-template@v2
-    #   with:
-    #     # Source file relative to the working directory, a Jinja2 template
-    #     source: 
-    #     # Target file relative to the working directory, to either create or overwrite
-    #     target: 
+    - name: Action Template
+      uses: release-engineers/action-template@v2
+      with:
+        # Target file relative to the working directory, to either create or overwrite
+        target: ./auger
