@@ -23,15 +23,17 @@ jobs:
 
     - name: Build
       run: |
+        mkdir -p release
         make release-docker-build GOARCH=amd64 GOOS=linux
-        ls
+        mv auger ./release/auger-amd64
+        make release-docker-build GOARCH=arm64 GOOS=linux
+        mv auger ./release/auger-arm64
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: auger
-        asset_name: mything
+        file: ./release/*
         tag: ${{ github.ref }}
         overwrite: true
         body: "This is my release text"
